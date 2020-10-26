@@ -6,8 +6,8 @@
 #define NUMBER_LINE 20
 #define NUMBER_ROW 12
 
-#define POSITION_X 10
-#define POSITION_Y 5
+#define POSITION_X 4
+#define POSITION_Y 4
 
 #define BRICK_PLAINE 254
 #define BRICK_VIDE ' '
@@ -21,5 +21,6 @@ void update_grid_game();
 int collision_to_border(TETRIMINOS type, int rotation, int x, int y);
 int collision(TETRIMINOS type, int rotation, int x, int y);
 int viderLigne();
+int get_grid_draw(int x, int y);
 
 #endif // GRID_H_INCLUDED

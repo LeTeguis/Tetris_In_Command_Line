@@ -150,3 +150,7 @@ int viderLigne(){
     }
     return count_line_delete;
 }
+
+int get_grid_draw(int x, int y){
+    return grid_Game_draw[x][y];
+}
