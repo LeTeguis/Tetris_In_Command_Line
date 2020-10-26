@@ -49,6 +49,7 @@ void updateScreenGrid();
 void updateScreenScore();
 void updateScreenNextTetris();
 void updateScreenTime();
+void updateScreenTitle();
 
 int gameOver();
 

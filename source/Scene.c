@@ -43,6 +43,8 @@ void initScene(){
             screenGame[i][j] = '*';
         }
     }
+
+    updateScreenTitle();
 }
 
 void drawScene(){
@@ -74,12 +76,45 @@ void updateScreenGrid(){
         }
     }
 }
-void updateScreenNextTetris(){
-    int i = 0, j = 0;
+
+void updateScreenTitle(){
+
+    screenGame[POSITION_X][POSITION_Y - 3] = 'T';
+    screenGame[POSITION_X + 1][POSITION_Y - 3] = 'e';
+    screenGame[POSITION_X + 2][POSITION_Y - 3] = 't';
+    screenGame[POSITION_X + 3][POSITION_Y - 3] = 'r';
+    screenGame[POSITION_X + 4][POSITION_Y - 3] = 'i';
+    screenGame[POSITION_X + 5][POSITION_Y - 3] = 's';
+    screenGame[POSITION_X + 7][POSITION_Y - 3] = 'b';
+    screenGame[POSITION_X + 8][POSITION_Y - 3] = 'y';
+    screenGame[POSITION_X + 10][POSITION_Y - 3] = 'L';
+    screenGame[POSITION_X + 11][POSITION_Y - 3] = 'E';
+    screenGame[POSITION_X + 12][POSITION_Y - 3] = 'T';
+    screenGame[POSITION_X + 13][POSITION_Y - 3] = 'E';
+    screenGame[POSITION_X + 14][POSITION_Y - 3] = 'G';
+    screenGame[POSITION_X + 15][POSITION_Y - 3] = 'U';
+    screenGame[POSITION_X + 16][POSITION_Y - 3] = 'I';
+    screenGame[POSITION_X + 17][POSITION_Y - 3] = 'S';
+
     screenGame[POSITION_X + NUMBER_ROW + 3][POSITION_Y] = 'N';
     screenGame[POSITION_X + NUMBER_ROW + 4][POSITION_Y] = 'e';
     screenGame[POSITION_X + NUMBER_ROW + 5][POSITION_Y] = 'x';
     screenGame[POSITION_X + NUMBER_ROW + 6][POSITION_Y] = 't';
+
+    screenGame[POSITION_X + NUMBER_ROW + 3][POSITION_Y + 9] = 'S';
+    screenGame[POSITION_X + NUMBER_ROW + 4][POSITION_Y + 9] = 'c';
+    screenGame[POSITION_X + NUMBER_ROW + 5][POSITION_Y + 9] = 'o';
+    screenGame[POSITION_X + NUMBER_ROW + 6][POSITION_Y + 9] = 'r';
+    screenGame[POSITION_X + NUMBER_ROW + 7][POSITION_Y + 9] = 'e';
+
+    screenGame[POSITION_X + NUMBER_ROW + 3][POSITION_Y + 6] = 'T';
+    screenGame[POSITION_X + NUMBER_ROW + 4][POSITION_Y + 6] = 'i';
+    screenGame[POSITION_X + NUMBER_ROW + 5][POSITION_Y + 6] = 'm';
+    screenGame[POSITION_X + NUMBER_ROW + 6][POSITION_Y + 6] = 'e';
+}
+
+void updateScreenNextTetris(){
+    int i = 0, j = 0;
     for(i = 0; i < 4; i++){
         for(j = 0; j < 4; j++){
             screenGame[POSITION_X + NUMBER_ROW + 3 + i][POSITION_Y + 1 + j] = (getTetriminos(NextType, 0, 0, i, j, NextRotation) == 1)?BRICK_PLAINE:'*';
@@ -88,11 +123,6 @@ void updateScreenNextTetris(){
 }
 void updateScreenScore(){
     int i = 0, j = 0;
-    screenGame[POSITION_X + NUMBER_ROW + 3][POSITION_Y + 9] = 'S';
-    screenGame[POSITION_X + NUMBER_ROW + 4][POSITION_Y + 9] = 'c';
-    screenGame[POSITION_X + NUMBER_ROW + 5][POSITION_Y + 9] = 'o';
-    screenGame[POSITION_X + NUMBER_ROW + 6][POSITION_Y + 9] = 'r';
-    screenGame[POSITION_X + NUMBER_ROW + 7][POSITION_Y + 9] = 'e';
     int scoreTmp = score;
     for(i = 0; i < numberOfChar(score); i++){
         screenGame[POSITION_X + NUMBER_ROW + 3 + numberOfChar(score) - i - 1][POSITION_Y + 10] = getDecimal(scoreTmp)+48;
@@ -101,10 +131,6 @@ void updateScreenScore(){
 }
 void updateScreenTime(){
     int i = 0, j = 0;
-    screenGame[POSITION_X + NUMBER_ROW + 3][POSITION_Y + 6] = 'T';
-    screenGame[POSITION_X + NUMBER_ROW + 4][POSITION_Y + 6] = 'i';
-    screenGame[POSITION_X + NUMBER_ROW + 5][POSITION_Y + 6] = 'm';
-    screenGame[POSITION_X + NUMBER_ROW + 6][POSITION_Y + 6] = 'e';
     int timeTmp = time_delay;
     for(i = 0; i < numberOfChar(time_delay); i++){
         screenGame[POSITION_X + NUMBER_ROW + 3 + numberOfChar(time_delay) - i - 1][POSITION_Y + 7] = getDecimal(timeTmp)+48;
