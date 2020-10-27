@@ -40,7 +40,21 @@ void initScene(){
     int i = 0, j = 0;
     for(i = 0; i < SCREEN_WIDTH; i++){
         for(j = 0; j < SCREEN_HIGHT; j++){
-            screenGame[i][j] = '*';
+            if(i == 0){
+                screenGame[i][j] = '[';
+            }else if( i == SCREEN_WIDTH - 1){
+                screenGame[i][j] = ']';
+            }
+            else if((j == 0 || j == SCREEN_HIGHT - 1 || j == 2) && (i != 0 || i != SCREEN_WIDTH - 1)){
+                screenGame[i][j] = BRICK_PLAINE;
+            }else if((i == 3 || i == 16) && j >= 4 && j <= 23){
+                screenGame[i][j] = 124;
+            }else if( (j == 3 || j == 24) && i >= 4 && i <= 15){
+                screenGame[i][j] = 134;
+            }
+            else{
+                screenGame[i][j] = ' ';
+            }
         }
     }
 
@@ -117,7 +131,7 @@ void updateScreenNextTetris(){
     int i = 0, j = 0;
     for(i = 0; i < 4; i++){
         for(j = 0; j < 4; j++){
-            screenGame[POSITION_X + NUMBER_ROW + 3 + i][POSITION_Y + 1 + j] = (getTetriminos(NextType, 0, 0, i, j, NextRotation) == 1)?BRICK_PLAINE:'*';
+            screenGame[POSITION_X + NUMBER_ROW + 3 + i][POSITION_Y + 1 + j] = (getTetriminos(NextType, 0, 0, i, j, NextRotation) == 1)?BRICK_PLAINE:' ';
         }
     }
 }
